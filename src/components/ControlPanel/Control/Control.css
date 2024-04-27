@@ -1,0 +1,52 @@
+.control {
+    margin-left: 2rem;
+    display: flex;
+    -webkit-user-select: none;
+    user-select: none;
+}
+.alter {
+    margin-right: 2rem;
+    margin-left: 5rem;
+    -webkit-user-select: none;
+    user-select: none;
+}
+div {
+    display: flex;
+}
+.control Button {
+    flex: 1;
+    white-space: nowrap;
+    text-align: center;
+    border-radius: .5rem;
+}
+.control Button:hover {
+    background-color: #282c34;
+}
+.control Button:disabled {
+    color: #1e1d1d;
+    background-color: #1976d259;
+}
+.control .middleButton {
+    margin-left: .15rem;
+    margin-right: .15rem;
+}
+.control #refresh-button {
+    border-radius: 2rem;
+    font-size: 1em;
+}
+.control #search {
+    background-color: #1976d2b8;
+    border-radius: .5rem;
+    width: 100%;
+}
+.control #search:focus {
+    background-color: unset;
+    border-radius: .1rem;
+    color: white;
+    -webkit-user-select: text;
+    user-select: text;
+}
+.control #search::-webkit-inner-spin-button, 
+.control #search::-webkit-outer-spin-button {
+    appearance: none;
+}
