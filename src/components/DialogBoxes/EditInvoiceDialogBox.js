@@ -45,10 +45,11 @@ export default function EditInvoiceDialogBox({ setTableData, empId, firstname: i
 
         handleClose();
     };
-    const onLastNameTextChange = (value) => {
+    
+    const onLastNameTextChange = (e) => {
         const re = /^[A-Za-z]+$/; // Regular expression to allow only alphabets
-        if (value.length < 50 && (value === "" || re.test(value))) {
-            setLastName(value);
+        if (e.target.value.length < 50 && (e.target.value === "" || re.test(e.target.value))) {
+            setLastName(e.target.value);
         }
     }
     
@@ -60,30 +61,28 @@ export default function EditInvoiceDialogBox({ setTableData, empId, firstname: i
         }
     }
     
-    const onAddressTextChange = (value) => {
+    const onAddressTextChange = (e) => {
         // You might need a different validation pattern for address
-        if (value.length < 100) {
-            setAddress(value);
+        if (e.target.value.length < 100) {
+            setAddress(e.target.value);
         }
     }
     
-    const onSalaryTextChange = (value) => {
+    const onSalaryTextChange = (e) => {
         // Regular expression to allow only numbers
         const re = /^[0-9]*$/;
-        if (value.length < 10 && (value === "" || re.test(value))) {
-            setSalary(value !== "" ? parseInt(value, 10) : null);
+        if (e.target.value.length < 10 && (e.target.value === "" || re.test(e.target.value))) {
+            setSalary(e.target.value !== "" ? parseInt(e.target.value, 10) : null);
         }
     }
+    
+    const onFirstNameChange = (e) => {
+        const re = /^[A-Za-z]+$/; // Regular expression to allow only alphabets
+        if (e.target.value.length < 50 && (e.target.value === "" || re.test(e.target.value))) {
+            setFirstName(e.target.value);
+        }
 
-const onFirstNameChange = (e) => {
-    const re = /^[A-Za-z]+$/; // Regular expression to allow only alphabets
-    if (e.target.value.length < 50 && (e.target.value === "" || re.test(e.target.value))) {
-        setFirstName(e.target.value);
-    }
 };
-
-
-
 
 return (
     <div className={css.dialogContainer}>

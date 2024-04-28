@@ -50,33 +50,32 @@ export default function AddInvoiceDialogBox({setTableData, openAddInvoiceConfirm
         handleClose();
     };
  
-    const onLastNameTextChange = (value) => {
+    const onLastNameTextChange = (e) => {
         const re = /^[A-Za-z]+$/; // Regular expression to allow only alphabets
-        if (value.length < 50 && (value === "" || re.test(value))) {
-            setLastName(value);
+        if (e.target.value.length < 50 && (e.target.value === "" || re.test(e.target.value))) {
+            setLastName(e.target.value);
         }
     }
     
-    const onEmailTextChange = (value) => {
-        // Regular expression for email validation (basic)
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (value.length < 100 && (value === "" || re.test(value))) {
-            setEmail(value);
+    const onEmailTextChange = (e) => {
+        const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (e.target.value.length < 50 && (e.target.value === "" || re.test(e.target.value))) {
+        setEmail(e.target.value);
         }
-    }
+    };
     
-    const onAddressTextChange = (value) => {
+    const onAddressTextChange = (e) => {
         // You might need a different validation pattern for address
-        if (value.length < 100) {
-            setAddress(value);
+        if (e.target.value.length < 100) {
+            setAddress(e.target.value);
         }
     }
     
-    const onSalaryTextChange = (value) => {
+    const onSalaryTextChange = (e) => {
         // Regular expression to allow only numbers
         const re = /^[0-9]*$/;
-        if (value.length < 10 && (value === "" || re.test(value))) {
-            setSalary(value !== "" ? parseInt(value, 10) : null);
+        if (e.target.value.length < 10 && (e.target.value === "" || re.test(e.target.value))) {
+            setSalary(e.target.value !== "" ? parseInt(e.target.value, 10) : null);
         }
     }
     
@@ -123,7 +122,7 @@ export default function AddInvoiceDialogBox({setTableData, openAddInvoiceConfirm
             label="LAST NAME:"
             value={lastname} // Use member variable here
             className={css.textField}
-            onChange={(event) => onLastNameTextChange(event.target.value)} // Add function for lastname
+            onChange={onLastNameTextChange} // Add function for lastname
             />
             <TextField
             required
@@ -131,7 +130,7 @@ export default function AddInvoiceDialogBox({setTableData, openAddInvoiceConfirm
             label="EMAIL:"
             value={email} // Use member variable here
             className={css.textField}
-            onChange={(event) => onEmailTextChange(event.target.value)} // Add function for email
+            onChange={onEmailTextChange} // Add function for email
             />
             <TextField
             required
@@ -139,7 +138,7 @@ export default function AddInvoiceDialogBox({setTableData, openAddInvoiceConfirm
             label="ADDRESS:"
             value={address} // Use member variable here
             className={css.textField}
-            onChange={(event) => onAddressTextChange(event.target.value)} // Add function for address
+            onChange={onAddressTextChange} // Add function for address
             />
             <TextField
             required
@@ -147,7 +146,7 @@ export default function AddInvoiceDialogBox({setTableData, openAddInvoiceConfirm
             label="SALARY:"
             value={salary != null ? salary.toString() : ""} // Handle null value for salary
             className={css.textField}
-            onChange={(event) => onSalaryTextChange(event.target.value)} // Add function for salary (assuming String input)
+            onChange={onSalaryTextChange} // Add function for salary (assuming String input)
             />
 
 
